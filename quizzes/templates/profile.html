@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Nabla&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+
+  <body class="home-body">
+    <header class="navContainer">
+      <nav class="navbar">
+        <a class="nav-brand">Quizzes</a>
+
+        <ul class="nav-menu">
+          <li class="nav-item"><a class="nav-link" href="../home/{{ user.id }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../profile/{{ user.id }}">My Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="../new-quiz/{{ user.id }}">Create New Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../start-quiz">Start Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Sign out</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <br>
+    <p id="username" class="heading">Hello, {{ user.username }} ..</p>
+    <br>
+
+    <br>
+    <br>
+    <div class="quizzes">
+      <table border="1" inputmode="html" class="table">
+        <caption class="heading">Your Taken Quizzes :</caption>
+        <!--naming the table-->
+        <thead class="tableHead">
+          <tr>
+            <td>Quiz</td>
+            <td>ID</td>
+<!--            <td>Your Grade</td>-->
+            <td>Details</td>
+          </tr>
+        </thead>
+<!--        <tbody id="tableBodyList" class="tableList">-->
+        <tbody class="tableList">
+          {% for quiz in taken_quizzes %}
+          <tr>
+            <td>{{ quiz.description }}</td>
+            <td>{{ quiz.id }}</td>
+<!--            <td></td>-->
+            <td>
+              <a class="btn" href="../quiz/{{ quiz.id }}/{{ user.id }}">See details</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+    <br>
+    <div class="quizzes">
+      <table border="1" inputmode="html" class="table">
+        <caption class="heading">Quizzes You Have Created :</caption>
+        <!--naming the table-->
+        <thead class="tableHead">
+          <tr>
+            <td>Quiz</td>
+            <td>ID</td>
+<!--            <td>Your Grade</td>-->
+            <td>Details</td>
+          </tr>
+        </thead>
+<!--        <tbody id="tableBodyList" class="tableList">-->
+        <tbody class="tableList">
+          {% for quiz in taken_quizzes %}
+          <tr>
+            <td>{{ quiz.description }}</td>
+            <td>{{ quiz.id }}</td>
+<!--            <td></td>-->
+            <td>
+              <a class="btn" href="../quiz/{{ quiz.id }}/{{ user.id }}">See details</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <br><br>
+    <footer>
+      <h3>Produced By</h3>
+      <ul>
+        <li>Sahar Mohamed</li>
+      </ul>
+    </footer>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Creating new quiz</title>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Nabla&family=Sacramento&display=swap"
+  rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
+</head>
+
+<body>
+
+  {% block content %}
+    <header class="navContainer">
+      <nav class="navbar">
+        <a class="nav-brand">Quizzes</a>
+
+        <ul class="nav-menu">
+          <li class="nav-item"><a class="nav-link" href="../home/{{ user.id }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../profile/{{ user.id }}">My Profile</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../new-quiz/{{ user.id }}">Create New Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../start-quiz">Start Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Sign out</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    {% if error %}
+    <br>
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    <br>
+    <p class="heading">Creating a new quiz</p>
+    <br>
+    <form method="POST" class="user-data-form">
+      {% csrf_token %}
+<!--      {{ form.as_p }}-->
+
+      <label for="description">Description</label>
+      <br>
+      <input type="text" name="description" placeholder="description" id="description" required />
+      <br>
+
+      <label for="nQuestions">Number of the questions</label>
+      <br>
+      <input type="number" name="nQuestions" placeholder="number of the questions" id="nQuestions" required />
+      <br>
+      <button class="btn" id="questionsBtn">Enter questions</button>
+      <br>
+
+
+      <div id="questions"></div>
+
+      <br><br>
+      <input type="submit" value="Create" />
+    </form>
+
+  {% endblock %}
+
+  {% load static %}
+  <script src="{% static 'js/signup.js' %}"></script>
+  <script src="{% static 'js/create_quiz.js' %}"></script>
+</body>
+
+</html>

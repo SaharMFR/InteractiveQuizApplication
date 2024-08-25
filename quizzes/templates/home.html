@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Nabla&family=Sacramento&display=swap"
+    rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <div class="container">
+    <header class="navContainer">
+      <nav class="navbar">
+        <a class="nav-brand">Quizzes</a>
+
+        <ul class="nav-menu">
+          <li class="nav-item"><a class="nav-link active" href="../home/{{ user.id }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../profile/{{ user.id }}">My Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="../new-quiz/{{ user.id }}">Create New Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../start-quiz">Start Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Sign out</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <br>
+    <p id="username" class="heading">Hello, {{ user.username }} ..</p>
+    <br>
+
+    <section class="main">
+      <img src="{% static 'assets/main.jpg' %}" class="home-img" />
+      <section class="home-main">
+        <h1>Interactive Quiz</h1>
+
+        <p>
+          The Student Affairs office at Cairo University is responsible for
+          managing the non-academic aspects of student life.
+          <br />
+          The office promotes student involvement in extracurricular activities,
+          including student organizations, clubs, and societies. The office also
+          organizes cultural and sports events to showcase student talents and
+          creativity.
+          <br />
+          <br />
+          Additionally, the office provides counseling and psychological
+          services to support student well-being and manages housing and
+          residential services.
+          <br />
+          Overall, the Student Affairs office at Cairo University plays a
+          critical role in enhancing the student experience by offering a wide
+          range of services and resources to support student success and
+          engagement.
+        </p>
+      </section>
+    </section>
+
+    <div class="features">
+      <div class="feature" id="feature-1">
+        <a href="#">
+          <img src="static/assets/feature1-image.jpg" />
+          <h2 class="btn">Feature-1</h2>
+        </a>
+      </div>
+      <div class="feature" id="feature-2">
+        <a href="#">
+          <img src="static/assets/feature2-image.jpg" />
+          <h2 class="btn">Feature-2</h2>
+        </a>
+      </div>
+      <div class="feature" id="feature-3">
+        <a href="#">
+          <img src="static/assets/feature3-image.jpg" />
+          <h2 class="btn">Feature-3</h2>
+        </a>
+      </div>
+      <div class="feature" id="feature-4">
+        <a href="#">
+          <img src="static/assets/feature4-image.jpg" />
+          <h2 class="btn">Feature-4</h2>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <h3>Produced By</h3>
+      <ul>
+        <li>Sahar Mohamed</li>
+      </ul>
+    </footer>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
+  </div>
+</body>
+</html>

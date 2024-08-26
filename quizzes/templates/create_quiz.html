@@ -25,7 +25,7 @@
           <li class="nav-item"><a class="nav-link" href="../home/{{ user.id }}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="../profile/{{ user.id }}">My Profile</a></li>
           <li class="nav-item"><a class="nav-link active" href="../new-quiz/{{ user.id }}">Create New Quiz</a></li>
-          <li class="nav-item"><a class="nav-link" href="../start-quiz">Start Quiz</a></li>
+          <li class="nav-item"><a class="nav-link" href="../start-quiz/{{ user.id }}">Start Quiz</a></li>
           <li class="nav-item"><a class="nav-link" href="/">Sign out</a></li>
         </ul>
         <div class="hamburger">
@@ -35,13 +35,20 @@
         </div>
       </nav>
     </header>
+    <br>
+    <p class="heading">Creating a new quiz</p>
+    <br>
+
     {% if error %}
     <br>
     <p class="error">{{ error }}</p>
     {% endif %}
+
+    {% if message %}
     <br>
-    <p class="heading">Creating a new quiz</p>
-    <br>
+    <p class="successful">{{ message }}</p>
+    {% endif %}
+
     <form method="POST" class="user-data-form">
       {% csrf_token %}
 <!--      {{ form.as_p }}-->
@@ -49,6 +56,11 @@
       <label for="description">Description</label>
       <br>
       <input type="text" name="description" placeholder="description" id="description" required />
+      <br>
+
+      <label for="duration">Duration of the quiz</label>
+      <br>
+      <input type="number" name="duration" placeholder="duration with minutes" id="duration" required />
       <br>
 
       <label for="nQuestions">Number of the questions</label>
@@ -68,7 +80,7 @@
   {% endblock %}
 
   {% load static %}
-  <script src="{% static 'js/signup.js' %}"></script>
+  <script src="{% static 'js/navbar.js' %}"></script>
   <script src="{% static 'js/create_quiz.js' %}"></script>
 </body>
 

@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Interactive Quiz</title>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Taking quiz</title>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Nabla&family=Sacramento&display=swap"
+  rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}" />
 </head>
+
 <body>
 
+  {% block content %}
+    <header class="start-header">
+      <h1>Taking Quiz</h1>
+<!--      <a href="/" class="home-icon"><i class="fas fa-home"></i></a>-->
+    </header>
+
+    <div id="countdown_timer"></div>
+
+    {% if error %}
+    <br>
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <br>
+    <p class="heading">Quiz : {{ quiz.description }}</p>
+    <p class="heading">Duration : {{ quiz.duration }} minutes</p>
+    <p class="heading">Full Mark : {{ quiz.full_mark }} marks</p>
+
+    <form method="POST" class="user-data-form" id="quiz">
+      {% csrf_token %}
+<!--      {{ form.as_p }}-->
+
+
+<!--      <label for="username">Username</label>-->
+<!--      <br />-->
+<!--      <input type="text" name="username" placeholder="username" id="username" required />-->
+<!--      <br />-->
+
+<!--      <label for="phone">Phone Number</label>-->
+<!--      <br />-->
+<!--      <input type="tel" name="phone" id="phone" required />-->
+<!--      <br />-->
+
+      {% for question in questions %}
+      <div class="question">
+        <label>
+          {{ question.description }}
+          ({{ question.mark }})
+        </label>
+
+        <br><br>
+        <div class="choices">
+          {% for choice in choices %}
+            {% if choice.question_id == question.id %}
+              <div class="choice-option">
+                <!-- Use question.id to uniquely identify the question's choices -->
+                <input type="radio" id="choice_{{ choice.id }}" name="question_{{ question.id }}" value="{{ choice.text }}" required />
+                <label for="choice_{{ choice.id }}">{{ choice.text }}</label>
+              </div>
+              <br>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+
+      <br><br>
+      <input type="submit" value="Submit The Quiz" />
+    </form>
+
+  {% endblock %}
+
+  {% load static %}
+  <script src="{% static 'js/quiz.js' %}"></script>
+  <script> let countdownTime = "{{ quiz.duration }}" * 60;</script>
 </body>
+
 </html>

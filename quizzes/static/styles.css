@@ -20,6 +20,11 @@ body {
   font-size: 1.2rem;
 }
 
+.home-main {
+  text-align: left;
+  margin: 50px;
+}
+
 .error {
   color: #a41515;
 }
@@ -38,7 +43,7 @@ body {
   width: 100%;
   text-decoration: none;
   font-family: 'Merriweather', serif;
-  /*font-weight: bold;*/
+  border: 1px solid #ccc;
 }
 
 .btn:hover,
@@ -231,15 +236,10 @@ footer {
   position: relative;
 }
 
-/*footer div {*/
-/*  margin-left: auto;*/
-/*}*/
-
 footer ul {
   list-style: none;
   margin: 0;
   padding: 0;
-
 }
 
 footer li {
@@ -280,7 +280,6 @@ footer li {
 .user-data-form {
   width: 600px;
   margin: 4em auto 1em;
-  /*margin-bottom: 1em;*/
   background-color: #fff;
   padding: 20px 50px;
   border-radius: 5px;
@@ -292,8 +291,10 @@ footer li {
   font-weight: bold;
 }
 
-.user-data-form input,
-.user-data-form input[type="password"] {
+.user-data-form input[type="text"],
+.user-data-form input[type="password"],
+.user-data-form input[type="number"],
+.user-data-form input[type="email"] {
   width: 100%;
   height: 50px;
   padding: 10px;
@@ -307,16 +308,26 @@ footer li {
   text-align: left;
   font-size: 30px;
   font-weight: bold;
-  /*display: block;*/
+  padding-left: 50px;
   width: 100%;
   white-space: nowrap;
-  /*overflow: hidden;*/
-  /*text-overflow: ellipsis;*/
 }
 
-table,
+.headingTitle {
+  color: #3498db;
+}
+
+table caption {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.quizzes,
 #welcome {
-  margin-left: 40px;
+  padding-left: 50px;
 }
 
 .tableHead tr td {
@@ -357,82 +368,37 @@ td {
 }
 
 .question {
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin: 50px 10px 10px 150px;
+  font-weight: bold;
+  text-align: left;
+}
+
+#rightChoice {
+  margin: 20px 10px 10px 200px;
   font-weight: bold;
   text-align: left;
 }
 
 .choices {
-  margin-left: 0; /* Removes any left margin, aligns choices to the left */
+  margin: 10px 10px 10px 250px;
+  text-align: left;
 }
 
 .choice-option {
-  padding-left: 0;
-}
-
-.choice-option label {
-  /*text-align: left;*/
-  display: flex;
-  /*align-items: center;*/
-  margin: 0; /* Indentation for choices */
+  margin: 0;
+  padding: 0;
 }
 
 .choice-option input[type="radio"] {
-  margin-right: 8px; /* Space between the radio button and label */
-  margin-left: 0; /* Ensures the radio button is flush left */
-  transform: scale(1); /* Ensures the radio button is at default size */
-  vertical-align: middle; /* Aligns the radio button with the label */
+  text-align: left;
+  margin-right: 20px;
+  transform: scale(2);
+  vertical-align: middle;
+  align-content: start;
 }
 
-/*.choice-option label {*/
-/*  margin: 0; !* Ensure there's no extra margin on the label *!*/
-/*  font-size: 14px; !* Adjust the label size if needed *!*/
-/*}*/
-
-/*.choice-option input[type="radio"] {*/
-/*  margin-right: 8px; !* Space between the radio and the label *!*/
-/*}*/
-
-/*#username {*/
-/*  padding-left: 40px;*/
-/*}*/
-
-/*.user-data-form input[type="submit"] {*/
-/*  background-color: #3498db;*/
-/*  color: #fff;*/
-/*  padding: 10px 20px;*/
-/*  border: none;*/
-/*  border-radius: 5px;*/
-/*  cursor: pointer;*/
-/*}*/
-
-/*.user-data-form input[type="submit"]:hover {*/
-/*  background-color: #3caffb;*/
-/*}*/
-
-/*label {*/
-/*  font-size: 1.2em;*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.gender {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*  padding: 0 30px;*/
-/*  font-size: 1em;*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.gender-option {*/
-/*  display: flex;*/
-/*  position: relative;*/
-/*  font-size: 1em;*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.gender input {*/
-/*  margin: 0;*/
-/*  margin-right: 10px;*/
-/*}*/
-
+.choice-option label {
+  margin: 0;
+  font-size: 1.5rem;
+}

@@ -1,9 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Quiz details</title>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Nabla&family=Sacramento&display=swap"
+    rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
 </head>
+
 <body>
+  <header class="navContainer">
+    <nav class="navbar">
+      <a class="nav-brand">Quizzes</a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a class="nav-link" href="../../../home/{{ user.id }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../../profile/{{ user.id }}">My Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../../new-quiz/{{ user.id }}">Create New Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../../start-quiz/{{ user.id }}">Start Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Sign out</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+
+  <br>
+  <p class="heading">
+    <span class="headingTitle">Quiz : </span>
+    {{ quiz.description }}
+  </p>
+  <p class="heading">
+    <span class="headingTitle">Number Of Questions : </span>
+    {{ quiz.n_questions }} questions
+  </p>
+  <p class="heading">
+    <span class="headingTitle">Duration : </span>
+    {{ quiz.duration }} minutes
+  </p>
+  <p class="heading">
+    <span class="headingTitle">Full Mark : </span>
+    {{ quiz.full_mark }} marks
+  </p>
+  {% if grade %}
+    <p class="heading">
+      <span class="headingTitle">Your grade : </span>
+      {{ grade }} marks ({{ percent }}%)
+    </p>
+  {% endif %}
+  <br>
+  <ol>
+    {% for question in questions %}
+      <li>
+        <div class="question">
+          {{ question.description }} ({{ question.mark }} marks)
+        </div>
+        <ol type="a" class="choices">
+          {% for choice in choices %}
+            {% if choice.question_id == question.id %}
+              <li>
+                {{ choice.text }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+        <p id="rightChoice" class="headingTitle">The right choice : {{ question.right_answer }}</p>
+      </li>
+    {% endfor %}
+  </ol>
+
+  <footer>
+    <h3>Produced By</h3>
+    <ul>
+      <li>Sahar Mohamed</li>
+    </ul>
+  </footer>
+
+  <script src="{% static 'js/navbar.js' %}"></script>
 </body>
 </html>

@@ -38,10 +38,9 @@
     <br>
 
     <br>
-    <br>
     <div class="quizzes">
       <table border="1" inputmode="html" class="table">
-        <caption class="heading">Your Taken Quizzes :</caption>
+        <caption>Your Taken Quizzes :</caption>
         <!--naming the table-->
         <thead class="tableHead">
           <tr>
@@ -51,20 +50,14 @@
             <td class="detailsCell">Details</td>
           </tr>
         </thead>
-<!--        <tbody id="tableBodyList" class="tableList">-->
         <tbody class="tableList">
           {% for quiz in taken_quizzes %}
           <tr>
-            {% for q in quizzes %}
-<!--              <td>{{ q.id }} == {{ quiz_id }}</td>-->
-              {% if q.id == quiz.quiz_id.id %}
-                <td>{{ q.description }}</td>
-                <td>{{ quiz.quiz_id.id }}</td>
-                <td>{{ quiz.score }} / {{ q.full_mark }}</td>
-              {% endif %}
-            {% endfor %}
+            <td>{{ quiz.quiz_id.description }}</td>
+            <td>{{ quiz.quiz_id.id }}</td>
+            <td>{{ quiz.score }} / {{ quiz.quiz_id.full_mark }}</td>
             <td>
-              <a class="btn" href="../quiz-details/{{ quiz.id }}/{{ user.id }}">See details</a>
+              <a class="btn" href="../quiz-details/{{ quiz.quiz_id.id }}/{{ user.id }}/true">See details</a>
             </td>
           </tr>
           {% endfor %}
@@ -76,25 +69,21 @@
     <br>
     <div class="quizzes">
       <table border="1" inputmode="html" class="table">
-        <caption class="heading">Quizzes You Have Created :</caption>
-        <!--naming the table-->
+        <caption>Quizzes You Have Created :</caption>
         <thead class="tableHead">
           <tr>
             <td class="desCell">Quiz</td>
             <td class="idCell">ID</td>
-<!--            <td>Your Grade</td>-->
             <td class="detailsCell">Details</td>
           </tr>
         </thead>
-<!--        <tbody id="tableBodyList" class="tableList">-->
         <tbody class="tableList">
           {% for quiz in created_quizzes %}
           <tr>
             <td>{{ quiz.description }}</td>
             <td>{{ quiz.id }}</td>
-<!--            <td></td>-->
             <td>
-              <a class="btn" href="../quiz-details/{{ quiz.id }}/{{ user.id }}">See details</a>
+              <a class="btn" href="../quiz-details/{{ quiz.id }}/{{ user.id }}/false">See details</a>
             </td>
           </tr>
           {% endfor %}

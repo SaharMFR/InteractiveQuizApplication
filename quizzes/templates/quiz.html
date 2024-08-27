@@ -30,30 +30,31 @@
     {% endif %}
 
     <br>
-    <p class="heading">Quiz : {{ quiz.description }}</p>
-    <p class="heading">Duration : {{ quiz.duration }} minutes</p>
-    <p class="heading">Full Mark : {{ quiz.full_mark }} marks</p>
+    <p class="heading">
+      <span class="headingTitle">Quiz : </span>
+      {{ quiz.description }}
+    </p>
+    <p class="heading">
+      <span class="headingTitle">Number Of Questions : </span>
+      {{ quiz.n_questions }} questions
+    </p>
+    <p class="heading">
+      <span class="headingTitle">Duration : </span>
+      {{ quiz.duration }} minutes
+    </p>
+    <p class="heading">
+      <span class="headingTitle">Full Mark : </span>
+      {{ quiz.full_mark }} marks
+    </p>
 
     <form method="POST" class="user-data-form" id="quiz">
       {% csrf_token %}
-<!--      {{ form.as_p }}-->
-
-
-<!--      <label for="username">Username</label>-->
-<!--      <br />-->
-<!--      <input type="text" name="username" placeholder="username" id="username" required />-->
-<!--      <br />-->
-
-<!--      <label for="phone">Phone Number</label>-->
-<!--      <br />-->
-<!--      <input type="tel" name="phone" id="phone" required />-->
-<!--      <br />-->
 
       {% for question in questions %}
       <div class="question">
         <label>
           {{ question.description }}
-          ({{ question.mark }})
+          ({{ question.mark }} marks)
         </label>
 
         <br><br>
@@ -61,7 +62,6 @@
           {% for choice in choices %}
             {% if choice.question_id == question.id %}
               <div class="choice-option">
-                <!-- Use question.id to uniquely identify the question's choices -->
                 <input type="radio" id="choice_{{ choice.id }}" name="question_{{ question.id }}" value="{{ choice.text }}" required />
                 <label for="choice_{{ choice.id }}">{{ choice.text }}</label>
               </div>
@@ -70,7 +70,6 @@
           {% endfor %}
         </div>
       </div>
-      <br>
       {% endfor %}
 
       <br><br>

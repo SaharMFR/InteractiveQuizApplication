@@ -6,7 +6,7 @@ Python (Django), HTML, CSS, JavaScript
 
 ## Description:
 
-A quiz application where users can answer multiple-choice questions. The project will have features like scoring, time limits, and feedback. This project will reinforce Python programming skills and web development basics.
+A quiz application where users can answer multiple-choice questions. The project will have features like scoring and time limits. This project will reinforce Python programming skills and web development basics.
 
 ## Set ups:
 

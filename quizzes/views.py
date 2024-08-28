@@ -147,16 +147,19 @@ def quiz_details(request, quiz_id, user_id, taken_flag):
   choices = Choice.objects.all()
   grade = None
   percent = None
+  students_took_it = TakenQuizzes.objects.filter(quiz_id=quiz)
   if taken_flag == 'true':
     taken_quiz = TakenQuizzes.objects.get(user_id=user, quiz_id=quiz)
     grade = taken_quiz.score
     percent = (float(grade) / quiz.full_mark) * 100
+    students_took_it = None
   context = {'quiz': quiz,
              'user': user,
              'questions': questions,
              'choices': choices,
              'grade': grade,
-             'percent': percent}
+             'percent': percent,
+             'students_took_it': students_took_it}
   return render(request, 'quiz_details.html', context)
 
 

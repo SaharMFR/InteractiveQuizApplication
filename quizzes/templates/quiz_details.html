@@ -73,6 +73,30 @@
     {% endfor %}
   </ol>
 
+  {% if students_took_it %}
+    <br>
+    <table border="1" inputmode="html" class="table" id="students">
+      <caption class="headingTitle">Who took the quiz :</caption>
+      <!--naming the table-->
+      <thead class="tableHead">
+        <tr>
+          <td class="nameCell">Username</td>
+          <td class="gradeCell">Grade</td>
+        </tr>
+      </thead>
+      <tbody class="tableList">
+        {% for student in students_took_it %}
+        <tr>
+          <td>{{ student.user_id.username }}</td>
+          <td>{{ student.score }} / {{ quiz.full_mark }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  <br><br>
+
   <footer>
     <h3>Produced By</h3>
     <ul>
